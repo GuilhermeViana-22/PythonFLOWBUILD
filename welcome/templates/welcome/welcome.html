@@ -1,49 +1,35 @@
 {% extends 'base.html' %}
 {% block title %}Welcome{% endblock %}
 {% block content %}
-<section class="hero-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto text-center">
-        <h1 class="display-4 fw-bold mb-4">Bem-vindo ao MVP Project</h1>
-        <p class="lead mb-4">
-          Uma solução moderna e eficiente construída com Django e Bootstrap.
-          Explore as funcionalidades e descubra como podemos ajudar você.
-        </p>
-        <a href="{% url 'signup' %}" class="btn btn-light btn-lg px-4 me-md-2">Começar Agora</a>
-      </div>
-    </div>
+<section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center py-24">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4">Bem-vindo ao MVP Project</h1>
+    <p class="mb-6">Uma solução moderna e eficiente construída com Django e Tailwind CSS. Explore as funcionalidades e descubra como podemos ajudar você.</p>
+    <a href="{% url 'signup' %}" class="bg-white text-indigo-600 font-semibold py-2 px-6 rounded">Começar Agora</a>
   </div>
 </section>
-<section class="py-5">
-  <div class="container">
-    <div class="row text-center mb-5">
-      <div class="col">
-        <h2 class="fw-bold">Funcionalidades Principais</h2>
-        <p class="text-muted">Descubra o que torna nosso projeto especial</p>
-      </div>
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold">Funcionalidades Principais</h2>
+      <p class="text-gray-600">Descubra o que torna nosso projeto especial</p>
     </div>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center p-4">
-          <div class="feature-icon">🚀</div>
-          <h5 class="card-title">Rápido e Eficiente</h5>
-          <p class="card-text">Construído com Django, oferece performance superior e desenvolvimento ágil.</p>
-        </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <div class="text-4xl mb-4">🚀</div>
+        <h5 class="text-xl font-semibold mb-2">Rápido e Eficiente</h5>
+        <p>Construído com Django, oferece performance superior e desenvolvimento ágil.</p>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center p-4">
-          <div class="feature-icon">📱</div>
-          <h5 class="card-title">Responsivo</h5>
-          <p class="card-text">Design totalmente responsivo com Bootstrap, funciona em todos os dispositivos.</p>
-        </div>
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <div class="text-4xl mb-4">📱</div>
+        <h5 class="text-xl font-semibold mb-2">Responsivo</h5>
+        <p>Design totalmente responsivo com Tailwind CSS, funciona em todos os dispositivos.</p>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center p-4">
-          <div class="feature-icon">🔒</div>
-          <h5 class="card-title">Seguro</h5>
-          <p class="card-text">Implementado com as melhores práticas de segurança do Django.</p>
-        </div>
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <div class="text-4xl mb-4">🔒</div>
+        <h5 class="text-xl font-semibold mb-2">Seguro</h5>
+        <p>Implementado com as melhores práticas de segurança do Django.</p>
       </div>
     </div>
   </div>
