@@ -187,6 +187,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   // User Growth Chart
+  const getVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
   const userGrowthChart = new Chart(userGrowthCtx, {
     type: 'line',
@@ -195,8 +196,8 @@
       datasets: [{
         label: 'New Users',
         data: [12, 19, 15, 27, 34, 42, 48],
-        backgroundColor: 'rgba(79, 70, 229, 0.1)',
-        borderColor: 'rgba(79, 70, 229, 1)',
+        backgroundColor: getVar('--chart-line-bg'),
+        borderColor: getVar('--chart-line-color'),
         borderWidth: 2,
         tension: 0.3,
         fill: true
@@ -227,18 +228,18 @@
       datasets: [{
         data: [35, 30, 15, 10, 10],
         backgroundColor: [
-          'rgba(99, 102, 241, 0.8)',
-          'rgba(14, 165, 233, 0.8)',
-          'rgba(236, 72, 153, 0.8)',
-          'rgba(245, 158, 11, 0.8)',
-          'rgba(16, 185, 129, 0.8)'
+          getVar('--donut-color-1'),
+          getVar('--donut-color-2'),
+          getVar('--donut-color-3'),
+          getVar('--donut-color-4'),
+          getVar('--donut-color-5')
         ],
         borderColor: [
-          'rgba(99, 102, 241, 1)',
-          'rgba(14, 165, 233, 1)',
-          'rgba(236, 72, 153, 1)',
-          'rgba(245, 158, 11, 1)',
-          'rgba(16, 185, 129, 1)'
+          getVar('--donut-color-1'),
+          getVar('--donut-color-2'),
+          getVar('--donut-color-3'),
+          getVar('--donut-color-4'),
+          getVar('--donut-color-5')
         ],
         borderWidth: 1
       }]
@@ -254,5 +255,23 @@
       cutout: '70%'
     }
   });
+
+  function updateChartColors() {
+    userGrowthChart.data.datasets[0].backgroundColor = getVar('--chart-line-bg');
+    userGrowthChart.data.datasets[0].borderColor = getVar('--chart-line-color');
+    userGrowthChart.update();
+
+    const donutColors = [
+      getVar('--donut-color-1'),
+      getVar('--donut-color-2'),
+      getVar('--donut-color-3'),
+      getVar('--donut-color-4'),
+      getVar('--donut-color-5')
+    ];
+    trafficSourcesChart.data.datasets[0].backgroundColor = donutColors;
+    trafficSourcesChart.data.datasets[0].borderColor = donutColors;
+    trafficSourcesChart.update();
+  }
+  document.addEventListener('DOMContentLoaded', updateChartColors);
 </script>
 {% endblock %}
