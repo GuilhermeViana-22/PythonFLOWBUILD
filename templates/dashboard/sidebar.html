@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar with Gradient</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        [x-cloak] { display: none !important; }
-        .sidebar-transition {
-            transition: all 0.3s ease;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #111827 100%);
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
-    <div class="flex">
-        <!-- Sidebar -->
-        <div class="gradient-bg text-white min-h-screen sidebar-transition" 
-             x-data="{ open: true }"
-             :class="open ? 'w-64' : 'w-20'">
+<!-- Sidebar -->
+<div class="gradient-bg text-white min-h-screen sidebar-transition" 
+     x-data="{ open: true }"
+     :class="open ? 'w-64' : 'w-20'">
             
             <!-- Logo/Header -->
             <div class="p-4 flex items-center justify-between border-b border-gray-700">
@@ -149,6 +128,10 @@
                             <i class="fas fa-bell text-xs mr-2"></i>
                             <span x-show="open">Notifications</span>
                         </a>
+                        <a href="{% url 'configurations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                            <i class="fas fa-cogs text-xs mr-2"></i>
+                            <span x-show="open">Configurations</span>
+                        </a>
                     </div>
                 </div>
                 
@@ -158,9 +141,12 @@
                     <span class="ml-3" x-show="open">Tasks</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Tasks</span>
                 </a>
-            </nav>
-        </div>
-        
-    </div>
-</body>
-</html>
+                
+                <!-- Profile -->
+                <a href="{% url 'profile' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                    <i class="fas fa-user text-lg w-5"></i>
+                    <span class="ml-3" x-show="open">Profile</span>
+                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Profile</span>
+                        </a>
+    </nav>
+</div>
