@@ -103,7 +103,7 @@ def dashboard_view(request):
         'username': request.user.username,
         'email': request.user.email,
     }
-    return render(request, 'authentication/dashboard.html', context)
+    return render(request, 'dashboard/dashboard.html', context)
 
 
 def logout_view(request):

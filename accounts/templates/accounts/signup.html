@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Registrar - Bob Flow{% endblock %}
+{% block title %}Sign Up - Bob Flow{% endblock %}
 {% block content %}
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 p-4">
   <div class="w-full max-w-md px-10 py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-3xl shadow-2xl transform transition-all hover:scale-[1.01]">
@@ -11,8 +11,8 @@
           </svg>
         </div>
       </div>
-      <h1 class="text-3xl font-bold text-gray-800 mb-2">Crie sua conta</h1>
-      <p class="text-gray-600">Junte-se ao Bob Flow e simplifique seus fluxos</p>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">Create your account</h1>
+      <p class="text-gray-600">Join Bob Flow and simplify your flows</p>
     </div>
     
     <form method="post" class="space-y-6">
@@ -47,20 +47,20 @@
         </div>
         <div class="ml-3 text-sm">
           <label for="terms" class="font-medium text-gray-700">
-            Concordo com os <a href="#" class="text-indigo-600 hover:text-indigo-500">Termos de Serviço</a> e <a href="#" class="text-indigo-600 hover:text-indigo-500">Política de Privacidade</a>
+            I agree with the <a href="#" class="text-indigo-600 hover:text-indigo-500">Terms of Service</a> and <a href="#" class="text-indigo-600 hover:text-indigo-500">Privacy Policy</a>
           </label>
         </div>
       </div>
       
       <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 transform hover:scale-[1.02]">
-        Criar conta
+        Create account
       </button>
     </form>
     
     <div class="mt-8 text-center">
       <p class="text-sm text-gray-600">
-        Já tem uma conta? 
-        <a href="{% url 'login' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Faça login</a>
+        Already have an account?
+        <a href="{% url 'login' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
       </p>
     </div>
   </div>

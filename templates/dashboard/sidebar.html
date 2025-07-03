@@ -1,0 +1,20 @@
+<div class="bg-gray-800 text-white w-64" x-data="{ open: true }">
+    <div class="p-4 text-xl font-bold">Flow Build</div>
+    <nav class="space-y-2">
+        <a href="{% url 'dashboard' %}" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a>
+        <div x-data="{ isOpen: false }" class="">
+            <button @click="isOpen = !isOpen" class="w-full flex justify-between px-4 py-2 hover:bg-gray-700">
+                <span>Management</span>
+                <svg class="w-4 h-4 transform" :class="{'rotate-90': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+            <div x-show="isOpen" class="ml-4 space-y-1" x-cloak>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Users</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Permissions</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Flow</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Settings</a>
+            </div>
+        </div>
+    </nav>
+</div>
