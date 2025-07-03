@@ -37,7 +37,7 @@ def login_view(request):
         else:
             messages.error(request, 'Por favor, preencha todos os campos.')
     
-    return render(request, 'authentication/login.html')
+    return render(request, 'accounts/login.html')
 
 
 def register_view(request):
@@ -72,7 +72,7 @@ def register_view(request):
         else:
             messages.error(request, 'Por favor, preencha todos os campos.')
     
-    return render(request, 'authentication/register.html')
+    return render(request, 'accounts/signup.html')
 
 
 def password_reset_view(request):
