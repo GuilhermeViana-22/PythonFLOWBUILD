@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
-from .models import DashboardUser
+from .models import DashboardUser, Position, Role, CustomPermission
 
 
 @login_required
@@ -40,17 +40,54 @@ def user_delete(request, user_id):
 
 @login_required
 def users_roles(request):
-    return render(request, 'dashboard/users_roles.html')
+    roles = Role.objects.all()
+    return render(request, 'dashboard/users_roles.html', {'roles': roles})
+
+
+@login_required
+def role_edit(request, role_id):
+    role = get_object_or_404(Role, pk=role_id)
+    if request.method == 'POST':
+        role.name = request.POST.get('name')
+        role.description = request.POST.get('description')
+        role.save()
+        return redirect('users_roles')
+    return render(request, 'dashboard/role_edit.html', {'role': role})
 
 
 @login_required
 def users_permissions(request):
-    return render(request, 'dashboard/users_permissions.html')
+    permissions = CustomPermission.objects.all()
+    return render(request, 'dashboard/users_permissions.html', {'permissions': permissions})
+
+
+@login_required
+def permission_edit(request, permission_id):
+    permission = get_object_or_404(CustomPermission, pk=permission_id)
+    if request.method == 'POST':
+        permission.name = request.POST.get('name')
+        permission.code = request.POST.get('code')
+        permission.description = request.POST.get('description')
+        permission.save()
+        return redirect('users_permissions')
+    return render(request, 'dashboard/permission_edit.html', {'permission': permission})
 
 
 @login_required
 def positions(request):
-    return render(request, 'dashboard/positions.html')
+    positions = Position.objects.all()
+    return render(request, 'dashboard/positions.html', {'positions': positions})
+
+
+@login_required
+def position_edit(request, position_id):
+    position = get_object_or_404(Position, pk=position_id)
+    if request.method == 'POST':
+        position.name = request.POST.get('name')
+        position.description = request.POST.get('description')
+        position.save()
+        return redirect('positions')
+    return render(request, 'dashboard/position_edit.html', {'position': position})
 
 
 @login_required
@@ -96,3 +133,22 @@ def settings_notifications(request):
 @login_required
 def tasks(request):
     return render(request, 'dashboard/tasks.html')
+
+
+@login_required
+def profile(request):
+    profile = getattr(request.user, 'profile', None)
+    if request.method == 'POST':
+        request.user.first_name = request.POST.get('name')
+        request.user.email = request.POST.get('email')
+        request.user.save()
+        if profile:
+            profile.phone = request.POST.get('phone')
+            profile.save()
+        return redirect('profile')
+    return render(request, 'dashboard/profile.html', {'profile': profile})
+
+
+@login_required
+def configurations(request):
+    return render(request, 'dashboard/configurations.html')
