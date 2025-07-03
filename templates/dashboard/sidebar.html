@@ -38,7 +38,7 @@
             <!-- Navigation -->
             <nav class="space-y-1 p-2">
                 <!-- Dashboard -->
-                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                <a href="{% url 'dashboard' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
                     <i class="fas fa-tachometer-alt text-lg w-5"></i>
                     <span class="ml-3" x-show="open">Dashboard</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
@@ -58,15 +58,15 @@
                     </button>
                     <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
                          :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'users_all' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-circle-notch text-xs mr-2"></i>
                             <span x-show="open">All Users</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'users_roles' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-user-tag text-xs mr-2"></i>
                             <span x-show="open">Roles</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'users_permissions' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-key text-xs mr-2"></i>
                             <span x-show="open">Permissions</span>
                         </a>
@@ -74,7 +74,7 @@
                 </div>
                 
                 <!-- Positions -->
-                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                <a href="{% url 'positions' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
                     <i class="fas fa-user-friends text-lg w-5"></i>
                     <span class="ml-3" x-show="open">Positions</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Positions</span>
@@ -94,15 +94,15 @@
                     </button>
                     <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
                          :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'flow_builder' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-tools text-xs mr-2"></i>
                             <span x-show="open">Builder</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'flow_templates' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-copy text-xs mr-2"></i>
                             <span x-show="open">Templates</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'flow_integrations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-plug text-xs mr-2"></i>
                             <span x-show="open">Integrations</span>
                         </a>
@@ -110,14 +110,14 @@
                 </div>
                 
                 <!-- Interpreter -->
-                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                <a href="{% url 'interpreter' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
                     <i class="fas fa-code text-lg w-5"></i>
                     <span class="ml-3" x-show="open">Interpreter</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Interpreter</span>
                 </a>
                 
                 <!-- History -->
-                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                <a href="{% url 'history' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
                     <i class="fas fa-history text-lg w-5"></i>
                     <span class="ml-3" x-show="open">History</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">History</span>
@@ -137,15 +137,15 @@
                     </button>
                     <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
                          :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'settings_general' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-sliders-h text-xs mr-2"></i>
                             <span x-show="open">General</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'settings_security' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-shield-alt text-xs mr-2"></i>
                             <span x-show="open">Security</span>
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                        <a href="{% url 'settings_notifications' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
                             <i class="fas fa-bell text-xs mr-2"></i>
                             <span x-show="open">Notifications</span>
                         </a>
@@ -153,7 +153,7 @@
                 </div>
                 
                 <!-- Tasks -->
-                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
+                <a href="{% url 'tasks' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
                     <i class="fas fa-tasks text-lg w-5"></i>
                     <span class="ml-3" x-show="open">Tasks</span>
                     <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Tasks</span>
