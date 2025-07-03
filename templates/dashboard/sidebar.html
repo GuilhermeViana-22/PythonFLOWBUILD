@@ -2,151 +2,151 @@
 <div class="gradient-bg text-white min-h-screen sidebar-transition" 
      x-data="{ open: true }"
      :class="open ? 'w-64' : 'w-20'">
-            
-            <!-- Logo/Header -->
-            <div class="p-4 flex items-center justify-between border-b border-gray-700">
-                <div class="flex items-center space-x-2" x-show="open">
-                    <i class="fas fa-bolt text-blue-400 text-xl"></i>
-                    <span class="text-xl font-bold">BobFlow Build</span>
+    
+    <!-- Logo/Header -->
+    <div class="p-4 flex items-center justify-between border-b border-gray-700 dark:border-gray-600">
+        <div class="flex items-center space-x-2" x-show="open">
+            <i class="fas fa-bolt text-blue-400 text-xl"></i>
+            <span class="text-xl font-bold">BobFlow Build</span>
+        </div>
+        <button @click="open = !open" class="p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-600 transition-all">
+            <i class="fas" :class="open ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+        </button>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="space-y-1 p-2">
+        <!-- Dashboard -->
+        <a href="{% url 'dashboard' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-tachometer-alt text-lg w-5"></i>
+            <span class="ml-3" x-show="open">Dashboard</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
+        </a>
+        
+        <!-- Users -->
+        <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200">
+            <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
+                <div class="flex items-center">
+                    <i class="fas fa-users text-lg w-5"></i>
+                    <span class="ml-3" x-show="open">Users</span>
+                    <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Users</span>
                 </div>
-                <button @click="open = !open" class="p-2 rounded-full hover:bg-gray-700 transition-all">
-                    <i class="fas" :class="open ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
-                </button>
+                <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
+                   :class="{'rotate-180': isOpen}" 
+                   x-show="open"></i>
+            </button>
+            <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
+                 :class="open ? 'ml-8' : 'ml-0'">
+                <a href="{% url 'users_all' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-circle-notch text-xs mr-2"></i>
+                    <span x-show="open">All Users</span>
+                </a>
+                <a href="{% url 'users_roles' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-user-tag text-xs mr-2"></i>
+                    <span x-show="open">Roles</span>
+                </a>
+                <a href="{% url 'users_permissions' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-key text-xs mr-2"></i>
+                    <span x-show="open">Permissions</span>
+                </a>
             </div>
-            
-            <!-- Navigation -->
-            <nav class="space-y-1 p-2">
-                <!-- Dashboard -->
-                <a href="{% url 'dashboard' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-tachometer-alt text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">Dashboard</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
-                </a>
-                
-                <!-- Users -->
-                <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 transition-all duration-200">
-                    <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
-                        <div class="flex items-center">
-                            <i class="fas fa-users text-lg w-5"></i>
-                            <span class="ml-3" x-show="open">Users</span>
-                            <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Users</span>
-                        </div>
-                        <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
-                           :class="{'rotate-180': isOpen}" 
-                           x-show="open"></i>
-                    </button>
-                    <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
-                         :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="{% url 'users_all' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-circle-notch text-xs mr-2"></i>
-                            <span x-show="open">All Users</span>
-                        </a>
-                        <a href="{% url 'users_roles' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-user-tag text-xs mr-2"></i>
-                            <span x-show="open">Roles</span>
-                        </a>
-                        <a href="{% url 'users_permissions' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-key text-xs mr-2"></i>
-                            <span x-show="open">Permissions</span>
-                        </a>
-                    </div>
+        </div>
+        
+        <!-- Positions -->
+        <a href="{% url 'positions' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-user-friends text-lg w-5"></i>
+            <span class="ml-3" x-show="open">Positions</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Positions</span>
+        </a>
+        
+        <!-- Flow -->
+        <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200">
+            <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
+                <div class="flex items-center">
+                    <i class="fas fa-project-diagram text-lg w-5"></i>
+                    <span class="ml-3" x-show="open">Flow</span>
+                    <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Flow</span>
                 </div>
-                
-                <!-- Positions -->
-                <a href="{% url 'positions' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-user-friends text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">Positions</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Positions</span>
+                <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
+                   :class="{'rotate-180': isOpen}" 
+                   x-show="open"></i>
+            </button>
+            <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
+                 :class="open ? 'ml-8' : 'ml-0'">
+                <a href="{% url 'flow_builder' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-tools text-xs mr-2"></i>
+                    <span x-show="open">Builder</span>
                 </a>
-                
-                <!-- Flow -->
-                <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 transition-all duration-200">
-                    <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
-                        <div class="flex items-center">
-                            <i class="fas fa-project-diagram text-lg w-5"></i>
-                            <span class="ml-3" x-show="open">Flow</span>
-                            <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Flow</span>
-                        </div>
-                        <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
-                           :class="{'rotate-180': isOpen}" 
-                           x-show="open"></i>
-                    </button>
-                    <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
-                         :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="{% url 'flow_builder' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-tools text-xs mr-2"></i>
-                            <span x-show="open">Builder</span>
-                        </a>
-                        <a href="{% url 'flow_templates' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-copy text-xs mr-2"></i>
-                            <span x-show="open">Templates</span>
-                        </a>
-                        <a href="{% url 'flow_integrations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-plug text-xs mr-2"></i>
-                            <span x-show="open">Integrations</span>
-                        </a>
-                    </div>
+                <a href="{% url 'flow_templates' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-copy text-xs mr-2"></i>
+                    <span x-show="open">Templates</span>
+                </a>
+                <a href="{% url 'flow_integrations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-plug text-xs mr-2"></i>
+                    <span x-show="open">Integrations</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Interpreter -->
+        <a href="{% url 'interpreter' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-code text-lg w-5"></i>
+            <span class="ml-3" x-show="open">Interpreter</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Interpreter</span>
+        </a>
+        
+        <!-- History -->
+        <a href="{% url 'history' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-history text-lg w-5"></i>
+            <span class="ml-3" x-show="open">History</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">History</span>
+        </a>
+        
+        <!-- Settings -->
+        <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200">
+            <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
+                <div class="flex items-center">
+                    <i class="fas fa-cog text-lg w-5"></i>
+                    <span class="ml-3" x-show="open">Settings</span>
+                    <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Settings</span>
                 </div>
-                
-                <!-- Interpreter -->
-                <a href="{% url 'interpreter' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-code text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">Interpreter</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Interpreter</span>
+                <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
+                   :class="{'rotate-180': isOpen}" 
+                   x-show="open"></i>
+            </button>
+            <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
+                 :class="open ? 'ml-8' : 'ml-0'">
+                <a href="{% url 'settings_general' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-sliders-h text-xs mr-2"></i>
+                    <span x-show="open">General</span>
                 </a>
-                
-                <!-- History -->
-                <a href="{% url 'history' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-history text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">History</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">History</span>
+                <a href="{% url 'settings_security' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-shield-alt text-xs mr-2"></i>
+                    <span x-show="open">Security</span>
                 </a>
-                
-                <!-- Settings -->
-                <div x-data="{ isOpen: false }" class="rounded-lg hover:bg-gray-700/50 transition-all duration-200">
-                    <button @click="isOpen = !isOpen" class="w-full flex items-center justify-between px-4 py-3 group">
-                        <div class="flex items-center">
-                            <i class="fas fa-cog text-lg w-5"></i>
-                            <span class="ml-3" x-show="open">Settings</span>
-                            <span x-show="!open && !isOpen" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Settings</span>
-                        </div>
-                        <i class="fas fa-chevron-down text-xs transform transition-transform duration-200" 
-                           :class="{'rotate-180': isOpen}" 
-                           x-show="open"></i>
-                    </button>
-                    <div x-show="isOpen" class="ml-8 space-y-1 py-1" x-cloak
-                         :class="open ? 'ml-8' : 'ml-0'">
-                        <a href="{% url 'settings_general' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-sliders-h text-xs mr-2"></i>
-                            <span x-show="open">General</span>
-                        </a>
-                        <a href="{% url 'settings_security' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-shield-alt text-xs mr-2"></i>
-                            <span x-show="open">Security</span>
-                        </a>
-                        <a href="{% url 'settings_notifications' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-bell text-xs mr-2"></i>
-                            <span x-show="open">Notifications</span>
-                        </a>
-                        <a href="{% url 'configurations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
-                            <i class="fas fa-cogs text-xs mr-2"></i>
-                            <span x-show="open">Configurations</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Tasks -->
-                <a href="{% url 'tasks' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-tasks text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">Tasks</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Tasks</span>
+                <a href="{% url 'settings_notifications' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-bell text-xs mr-2"></i>
+                    <span x-show="open">Notifications</span>
                 </a>
-                
-                <!-- Profile -->
-                <a href="{% url 'profile' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200 group">
-                    <i class="fas fa-user text-lg w-5"></i>
-                    <span class="ml-3" x-show="open">Profile</span>
-                    <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Profile</span>
-                        </a>
+                <a href="{% url 'configurations' %}" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-200">
+                    <i class="fas fa-cogs text-xs mr-2"></i>
+                    <span x-show="open">Configurations</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Tasks -->
+        <a href="{% url 'tasks' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-tasks text-lg w-5"></i>
+            <span class="ml-3" x-show="open">Tasks</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Tasks</span>
+        </a>
+        
+        <!-- Profile -->
+        <a href="{% url 'profile' %}" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-600/50 transition-all duration-200 group">
+            <i class="fas fa-user text-lg w-5"></i>
+            <span class="ml-3" x-show="open">Profile</span>
+            <span x-show="!open" class="absolute left-14 ml-2 px-2 py-1 text-xs rounded bg-gray-900 text-white opacity-0 group-hover:opacity-100 transition-opacity">Profile</span>
+        </a>
     </nav>
 </div>

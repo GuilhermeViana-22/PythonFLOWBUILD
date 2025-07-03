@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Authentication{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+        function setIconState() {
+            const icon = document.getElementById('theme-toggle-icon');
+            if (!icon) return;
+            const isDark = document.documentElement.classList.contains('dark');
+            icon.classList.toggle('fa-moon', !isDark);
+            icon.classList.toggle('fa-sun', isDark);
+        }
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            setIconState();
+        }
+        document.addEventListener('DOMContentLoaded', setIconState);
+    </script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 {% block content %}{% endblock %}
 </body>
 </html>
