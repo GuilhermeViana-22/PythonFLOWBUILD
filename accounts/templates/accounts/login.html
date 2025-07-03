@@ -1,17 +1,27 @@
 {% extends 'base_auth.html' %}
 {% block title %}Login{% endblock %}
+
 {% block content %}
-<div class="min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
-    <h2 class="text-center text-2xl font-semibold mb-6">Login</h2>
-    <form method="post">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+  <div class="w-full max-w-md bg-white shadow-2xl rounded-2xl px-8 py-10">
+    <h2 class="text-center text-3xl font-bold text-gray-800 mb-8">Entrar na sua conta</h2>
+    <form method="post" class="space-y-4">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded">Entrar</button>
+      <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-lg font-semibold transition duration-300">
+        Entrar
+      </button>
     </form>
-    <div class="text-center mt-4">
-      <p class="mb-2">Não tem conta? <a class="text-indigo-600 hover:underline" href="{% url 'signup' %}">Registre-se</a></p>
-      <p><a class="text-indigo-600 hover:underline" href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+    <div class="text-center mt-6 text-sm text-gray-700">
+      <p class="mb-2">
+        Não tem conta?
+        <a class="text-white font-medium underline hover:text-gray-200 transition" href="{% url 'signup' %}">Registre-se</a>
+      </p>
+      <p>
+        <a class="text-white font-medium underline hover:text-gray-200 transition" href="{% url 'password_reset' %}">
+          Esqueceu a senha?
+        </a>
+      </p>
     </div>
   </div>
 </div>
