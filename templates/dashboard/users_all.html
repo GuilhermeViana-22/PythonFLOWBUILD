@@ -3,7 +3,7 @@
 {% block title %}User Management{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-4">User Management</h1>
+<h1 class="text-3xl font-bold mb-4">User Management</h1>
 
 <form method="get" class="mb-4">
     <input type="text" name="q" value="{{ query }}" placeholder="Search" class="border p-2 rounded" />
@@ -47,5 +47,4 @@
         <a href="?q={{ query }}&page={{ users.next_page_number }}" class="px-3 py-1 border rounded">Next</a>
     {% endif %}
 </div>
-
 {% endblock %}
