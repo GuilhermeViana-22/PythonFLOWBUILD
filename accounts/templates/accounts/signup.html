@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Registrar{% endblock %}
 {% block content %}
-<div class="d-flex align-items-center justify-content-center min-vh-100">
-  <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
-    <h2 class="text-center mb-4">Registro</h2>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white shadow-md rounded px-8 py-6 w-full max-w-md">
+    <h2 class="text-center text-2xl font-semibold mb-6">Registro</h2>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-primary w-100">Registrar</button>
+      <button type="submit" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded">Registrar</button>
     </form>
-    <div class="text-center mt-3">
-      <p>Já tem conta? <a href="{% url 'login' %}">Login</a></p>
+    <div class="text-center mt-4">
+      <p>Já tem conta? <a class="text-indigo-600 hover:underline" href="{% url 'login' %}">Login</a></p>
     </div>
   </div>
 </div>

@@ -5,12 +5,13 @@ from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
+    base_class = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'
     name = forms.CharField(max_length=150, label='Name',
-                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+                           widget=forms.TextInput(attrs={'class': base_class}))
     email = forms.EmailField(label='Email',
-                             widget=forms.EmailInput(attrs={'class': 'form-control'}))
+                             widget=forms.EmailInput(attrs={'class': base_class}))
     phone = forms.CharField(max_length=20, label='Telefone',
-                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+                           widget=forms.TextInput(attrs={'class': base_class}))
 
     class Meta:
         model = User
@@ -18,8 +19,8 @@ class SignUpForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['password1'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password2'].widget.attrs.update({'class': 'form-control'})
+        self.fields['password1'].widget.attrs.update({'class': self.base_class})
+        self.fields['password2'].widget.attrs.update({'class': self.base_class})
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -33,9 +34,9 @@ class SignUpForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
-    """Authentication form com classes do Bootstrap"""
+    """Authentication form com classes do Tailwind"""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control'})
+            field.widget.attrs.update({'class': SignUpForm.base_class})
