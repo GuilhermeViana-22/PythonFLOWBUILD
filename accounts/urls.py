@@ -3,7 +3,8 @@ from django.contrib.auth import views as auth_views
 from .views import SignUpView, EmailLoginView
 
 urlpatterns = [
-    path('login/', EmailLoginView.as_view(), name='login'),
+    path('', EmailLoginView.as_view(), name='login'),
+    path('login/', EmailLoginView.as_view(), name='login_alt'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_form.html'), name='password_reset'),

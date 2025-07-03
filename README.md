@@ -13,9 +13,10 @@ Um projeto MVP (Minimum Viable Product) construído com Django e Bootstrap.
 ## Instalação
 
 1. Clone o repositório
-2. Instale as dependências:
+2. Crie e ative um ambiente virtual e instale as dependências executando o
+   script `setup.sh`:
    ```bash
-   pip3 install -r requirements.txt
+   ./setup.sh
    ```
 
 3. Execute as migrações:
@@ -29,6 +30,19 @@ Um projeto MVP (Minimum Viable Product) construído com Django e Bootstrap.
    ```
 
 5. Acesse o projeto em: `http://localhost:8000`
+
+### Configuração do MySQL
+
+O projeto utiliza MySQL por padrão. Defina as variáveis de ambiente abaixo ou
+edite `mvp_project/settings.py` conforme necessário:
+
+```bash
+export MYSQL_DB=mvp_db
+export MYSQL_USER=root
+export MYSQL_PASSWORD=senha
+export MYSQL_HOST=localhost
+export MYSQL_PORT=3306
+```
 
 ## Estrutura do Projeto
 
@@ -49,7 +63,7 @@ PythonFlowBuild/
 
 - **Django 4.2.23**: Framework web Python
 - **Bootstrap 5.3.0**: Framework CSS responsivo
-- **SQLite**: Banco de dados padrão
+- **MySQL**: Banco de dados utilizado
 - **HTML5/CSS3**: Estrutura e estilo
 
 ## Próximos Passos
