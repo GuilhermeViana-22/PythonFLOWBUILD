@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Login - Bob Flow{% endblock %}
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700">
-  <div class="w-full max-w-md px-8 py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl shadow-xl transform transition-all hover:scale-[1.01]">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950">
+  <div class="w-full max-w-md px-8 py-12 bg-white/20 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl">
     <div class="text-center mb-8">
       <div class="flex justify-center mb-4">
         <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-2 rounded-full">
@@ -11,8 +11,8 @@
           </svg>
         </div>
       </div>
-      <h1 class="text-3xl font-bold text-gray-800 mb-2">Bob Flow</h1>
-      <p class="text-gray-600">Manage your flows with elegance</p>
+      <h1 class="text-3xl font-bold text-white mb-2">Bob Flow</h1>
+      <p class="text-blue-200">Manage your flows with elegance</p>
     </div>
     
     <form method="post" class="space-y-6">
@@ -20,42 +20,70 @@
       
       <div class="space-y-4">
         <div>
-          <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-          <input type="text" name="username" id="username" required 
-                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" 
+          <label for="username" class="block text-sm font-medium text-white mb-1">Username</label>
+          <input type="text" name="username" id="username" required
+                 class="w-full px-4 py-3 rounded-lg bg-white/30 border border-blue-900 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                  placeholder="Enter your username">
         </div>
         
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-          <input type="password" name="password" id="password" required 
-                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" 
-                 placeholder="Enter your password">
+          <label for="password" class="block text-sm font-medium text-white mb-1">Password</label>
+          <div class="relative">
+            <input type="password" name="password" id="password" required
+                   class="w-full px-4 py-3 pr-10 rounded-lg bg-white/30 border border-blue-900 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                   placeholder="Enter your password">
+            <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-2 flex items-center text-blue-200 hover:text-white">
+              <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.27-2.943-9.542-7a9.965 9.965 0 011.666-3.043m3.087-2.85A9.956 9.956 0 0112 5c4.478 0 8.27 2.943 9.542 7a9.973 9.973 0 01-4.29 5.272M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
       
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-          <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+          <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-700 focus:ring-blue-500 border-blue-700 rounded bg-white/30">
+          <label for="remember-me" class="ml-2 block text-sm text-blue-200">Remember me</label>
         </div>
         
         <div class="text-sm">
-          <a href="{% url 'password_reset' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+          <a href="{% url 'password_reset' %}" class="font-medium text-blue-300 hover:text-white">Forgot password?</a>
         </div>
       </div>
       
-      <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200">
+      <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 transition duration-200">
         Sign in
       </button>
     </form>
     
     <div class="mt-6 text-center">
-      <p class="text-sm text-gray-600">
+      <p class="text-sm text-blue-200">
         Don't have an account?
-        <a href="{% url 'signup' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Sign up</a>
+        <a href="{% url 'signup' %}" class="font-medium text-blue-300 hover:text-white">Sign up</a>
       </p>
     </div>
   </div>
 </div>
+<script>
+  function togglePassword() {
+    const input = document.getElementById('password');
+    const openEye = document.getElementById('eye-open');
+    const closedEye = document.getElementById('eye-closed');
+    if (input.type === 'password') {
+      input.type = 'text';
+      openEye.classList.add('hidden');
+      closedEye.classList.remove('hidden');
+    } else {
+      input.type = 'password';
+      openEye.classList.remove('hidden');
+      closedEye.classList.add('hidden');
+    }
+  }
+</script>
 {% endblock %}

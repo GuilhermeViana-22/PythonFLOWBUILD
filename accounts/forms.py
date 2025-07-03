@@ -5,7 +5,7 @@ from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
-    base_class = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'
+    base_class = 'w-full px-4 py-3 rounded-lg bg-white/30 border border-blue-900 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
     name = forms.CharField(max_length=150, label='Name',
                            widget=forms.TextInput(attrs={'class': base_class}))
     email = forms.EmailField(label='Email',
