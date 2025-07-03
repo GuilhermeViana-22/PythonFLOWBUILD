@@ -7,22 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<nav class="bg-gray-800">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex items-center justify-between py-4">
-      <a class="text-white font-semibold" href="{% url 'welcome' %}">MVP Project</a>
-      <ul class="flex space-x-4">
-        <li><a class="text-white hover:text-gray-300" href="{% url 'welcome' %}">Home</a></li>
-        {% if user.is_authenticated %}
-        <li><a class="text-white hover:text-gray-300" href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-        <li><a class="text-white hover:text-gray-300" href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="max-w-6xl mx-auto px-4 py-6">
+
+<div class="">
 {% block content %}{% endblock %}
 </div>
 </body>
