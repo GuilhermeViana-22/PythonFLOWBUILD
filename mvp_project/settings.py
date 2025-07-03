@@ -45,6 +45,16 @@ INSTALLED_APPS = [
     'welcome',
     'authentication',
     'dashboard',
+    'users',
+    'permissions',
+    'positions',
+    'flows',
+    'history',
+    'settings',
+    'tasks',
+    'user_profile',
+    'configurations',
+    'interpreter',
 ]
 
 MIDDLEWARE = [

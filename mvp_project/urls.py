@@ -27,6 +27,16 @@ urlpatterns = [
     path('welcome/', include('welcome.urls')),
     path('auth/', include('authentication.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('users/', include('users.urls')),
+    path('permissions/', include('permissions.urls')),
+    path('positions/', include('positions.urls')),
+    path('flows/', include('flows.urls')),
+    path('history/', include('history.urls')),
+    path('settings/', include('settings.urls')),
+    path('tasks/', include('tasks.urls')),
+    path('profile/', include('user_profile.urls')),
+    path('configurations/', include('configurations.urls')),
+    path('interpreter/', include('interpreter.urls')),
 ]
 
 if settings.DEBUG:
