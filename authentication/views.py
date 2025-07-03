@@ -14,6 +14,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from rest_framework_simplejwt.tokens import RefreshToken
+from datetime import datetime, timedelta
 import json
 
 
@@ -98,10 +99,81 @@ def password_reset_view(request):
 @login_required
 def dashboard_view(request):
     """View para dashboard - requer autenticação"""
+    now = datetime.now()
+    
+    # Dados simulados para recent_users
+    recent_users = [
+        {
+            'name': 'João Silva',
+            'avatar': 'https://via.placeholder.com/40',
+            'join_date': '2 days ago',
+            'status': 'Active'
+        },
+        {
+            'name': 'Maria Santos',
+            'avatar': 'https://via.placeholder.com/40',
+            'join_date': '1 day ago',
+            'status': 'Active'
+        },
+        {
+            'name': 'Pedro Lima',
+            'avatar': 'https://via.placeholder.com/40',
+            'join_date': '3 days ago',
+            'status': 'Inactive'
+        },
+        {
+            'name': 'Ana Costa',
+            'avatar': 'https://via.placeholder.com/40',
+            'join_date': '1 hour ago',
+            'status': 'Active'
+        },
+    ]
+    
+    # Dados simulados para recent_activities
+    recent_activities = [
+        {
+            'user': {
+                'name': 'João Silva',
+                'email': 'joao@email.com',
+                'avatar': 'https://via.placeholder.com/40'
+            },
+            'action': 'User Login',
+            'details': 'Logged in successfully',
+            'ip': '192.168.1.100',
+            'time': '2 min ago'
+        },
+        {
+            'user': {
+                'name': 'Maria Santos',
+                'email': 'maria@email.com',
+                'avatar': 'https://via.placeholder.com/40'
+            },
+            'action': 'Profile Update',
+            'details': 'Updated profile information',
+            'ip': '192.168.1.101',
+            'time': '5 min ago'
+        },
+        {
+            'user': {
+                'name': 'Pedro Lima',
+                'email': 'pedro@email.com',
+                'avatar': 'https://via.placeholder.com/40'
+            },
+            'action': 'Password Change',
+            'details': 'Changed password',
+            'ip': '192.168.1.102',
+            'time': '10 min ago'
+        },
+    ]
+    
     context = {
         'user': request.user,
         'username': request.user.username,
         'email': request.user.email,
+        'current_date': now.strftime('%B %d, %Y'),
+        'current_time': now.strftime('%I:%M %p'),
+        'recent_users': recent_users,
+        'recent_activities': recent_activities,
     }
     return render(request, 'dashboard/dashboard.html', context)
 
